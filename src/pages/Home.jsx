@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
 
-    const [lista, setLista] = useState([]);
+    const [produtos, setProdutos] = useState([]);
 
     useEffect(() => {
         const receberListaProdutos = async () => {
             try{
-                const resposta = await fetch('https://fakestoreapi.com/products');    
+                const resposta = await fetch('https://fakestoreapi.com/products');
+                const data = await response.json();
+                setProdutos(data);    
             } catch (erro) {
-                alert("A conecxão com a API falhou");
+                alert("A conecxão com a Lista de Produtos falhou");
             }
         }
 
